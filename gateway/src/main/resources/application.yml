@@ -11,11 +11,11 @@ spring:
         - id: client
           uri: http://localhost:8081
           predicates:
-            - Path=/주문/**, /orders/**, /payments/**, /메뉴판/**, /통합주문상태/**, /menuLists/**, /couponLists/**
+            - Path=/orders/**, /payments/**, /menuLists/**, /couponLists/**
         - id: store
           uri: http://localhost:8082
           predicates:
-            - Path=/주문관리/**, /acceptedOrders/**, /주문상세보기/**
+            - Path=/acceptedOrders/**
         - id: notice
           uri: http://localhost:8083
           predicates:
@@ -54,11 +54,11 @@ spring:
         - id: client
           uri: http://client:8080
           predicates:
-            - Path=/주문/**, /orders/**, /payments/**, /메뉴판/**, /통합주문상태/**, /menuLists/**, /couponLists/**
+            - Path=/orders/**, /payments/**, /menuLists/**, /couponLists/**
         - id: store
           uri: http://store:8080
           predicates:
-            - Path=/주문관리/**, /acceptedOrders/**, /주문상세보기/**
+            - Path=/acceptedOrders/**
         - id: notice
           uri: http://notice:8080
           predicates:
