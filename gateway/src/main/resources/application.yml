@@ -1,0 +1,90 @@
+server:
+  port: 8088
+
+---
+
+spring:
+  profiles: default
+  cloud:
+    gateway:
+      routes:
+        - id: client
+          uri: http://localhost:8081
+          predicates:
+            - Path=/주문/**, /orders/**, /payments/**, /메뉴판/**, /통합주문상태/**, /menuLists/**, /couponLists/**
+        - id: store
+          uri: http://localhost:8082
+          predicates:
+            - Path=/주문관리/**, /acceptedOrders/**, /주문상세보기/**
+        - id: notice
+          uri: http://localhost:8083
+          predicates:
+            - Path=/notifications/**, /orderStatuses/**
+        - id: delivery
+          uri: http://localhost:8084
+          predicates:
+            - Path=/deliveries/**, 
+        - id: coupon
+          uri: http://localhost:8085
+          predicates:
+            - Path=/sendedCoupons/**, /orderLists/**
+        - id: frontend
+          uri: http://localhost:8080
+          predicates:
+            - Path=/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: client
+          uri: http://client:8080
+          predicates:
+            - Path=/주문/**, /orders/**, /payments/**, /메뉴판/**, /통합주문상태/**, /menuLists/**, /couponLists/**
+        - id: store
+          uri: http://store:8080
+          predicates:
+            - Path=/주문관리/**, /acceptedOrders/**, /주문상세보기/**
+        - id: notice
+          uri: http://notice:8080
+          predicates:
+            - Path=/notifications/**, /orderStatuses/**
+        - id: delivery
+          uri: http://delivery:8080
+          predicates:
+            - Path=/deliveries/**, 
+        - id: coupon
+          uri: http://coupon:8080
+          predicates:
+            - Path=/sendedCoupons/**, /orderLists/**
+        - id: frontend
+          uri: http://frontend:8080
+          predicates:
+            - Path=/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
