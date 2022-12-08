@@ -1,11 +1,9 @@
 package shfooddelivery.domain;
 
-import shfooddelivery.domain.배달시작됨;
 import shfooddelivery.domain.OrderAccepted;
 import shfooddelivery.domain.OrderRejected;
 import shfooddelivery.domain.CookStarted;
 import shfooddelivery.domain.CookFinished;
-import shfooddelivery.domain.쿠폰발행됨;
 import shfooddelivery.StoreApplication;
 import javax.persistence.*;
 import java.util.List;
@@ -70,11 +68,6 @@ public class AcceptedOrder  {
     public void onPostPersist(){
 
 
-        배달시작됨 배달시작됨 = new 배달시작됨(this);
-        배달시작됨.publishAfterCommit();
-
-
-
         OrderAccepted orderAccepted = new OrderAccepted(this);
         orderAccepted.publishAfterCommit();
 
@@ -92,14 +85,6 @@ public class AcceptedOrder  {
 
         CookFinished cookFinished = new CookFinished(this);
         cookFinished.publishAfterCommit();
-
-    }
-    @PrePersist
-    public void onPrePersist(){
-
-
-        쿠폰발행됨 쿠폰발행됨 = new 쿠폰발행됨(this);
-        쿠폰발행됨.publishAfterCommit();
 
     }
     @PreUpdate
