@@ -8,6 +8,9 @@ import java.util.*;
 @Data
 public class Paid extends AbstractEvent {
 
+    public Paid(Payment payment) {
+    }
+
     private Long id;
     private String costomerId;
     private String price;
