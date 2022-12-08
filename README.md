@@ -99,6 +99,17 @@ public void wheneverOrderPlaced_Pay(@Payload OrderPlaced orderPlaced){
 
 ## Compensation / Correlation
 단골쿠폰 발송 : 가게 주인이 단골고객에게 쿠폰을 발송하기 위한 '쿠폰 발송' 버튼을 클릭한다.
+
+    public static void kakaoNotify(CouponSended couponSended){
+
+        
+        repository().findById(couponSended.getId()).ifPresent(notification->{
+            
+            notification.notify();
+            repository().save(notification);
+         });        
+    }
+
 ![Compensation](https://user-images.githubusercontent.com/119824334/205849219-08dff944-a690-48d1-94bd-ea389cbb40af.jpg)
 
 ## Request / Response
