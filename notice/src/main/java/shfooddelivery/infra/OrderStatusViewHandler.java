@@ -63,7 +63,7 @@ public class OrderStatusViewHandler {
         try {
             if (!orderAccepted.validate()) return;
                 // view 객체 조회
-            Optional<OrderStatus> orderStatusOptional = orderStatusRepository.findById(Long.valueOf(orderAccepted.getOrdered()));
+            Optional<OrderStatus> orderStatusOptional = orderStatusRepository.findById(orderAccepted.getId());
 
             if( orderStatusOptional.isPresent()) {
                  OrderStatus orderStatus = orderStatusOptional.get();
