@@ -128,20 +128,9 @@ public class PolicyHandler{
         OrderPlaced event = orderPlaced;
         System.out.println("\n\n##### listener Pay : " + orderPlaced + "\n\n");
 
-        // REST Request Sample
-        
-        // sendedCouponService.getSendedCoupon(/** mapping value needed */);
-
-
-        
-
         // Sample Logic //
         Order.pay(event);
-        
         Payment.pay(event);
-        
-
-        
 
     }
 
